@@ -58,7 +58,12 @@ ls - Glp : list all files in directory, ?, in long format, with /
 
 Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) and pick 5 of your favorites:
 
-> > REPLACE THIS TEXT WITH YOUR RESPONSE
+> > 
+1. -m : display the names as a comma separated list
+2. -c : display files by timestamp
+3. -R : display subdirectories as well
+4. -u : display files by file access time
+5. -d : display only directories
 
 ---
 
@@ -66,7 +71,11 @@ Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) 
 
 What does `xargs` do? Give an example of how to use it.
 
-> > REPLACE THIS TEXT WITH YOUR RESPONSE
+> > It applies a given command to a series of things in order.
+
+Say you wanted to change the ownership of all the files in a directory from one group to another called "forcedxmpls"
+you could write
+$ ls | xargs -n 1 chgrp forcedxmpls
 
  
 
