@@ -45,13 +45,13 @@ What do the following commands do:
 `ls -Glp`  
 
 > > 
-'ls' : list all files in directory
-'ls -a' : list all files in directory, including hidden files
-'ls -l' : list all files in directory, in long form
-'ls -lh' : list all files in directory, in long form, with readable format
-'ls -lah' : list all files in directory, including hidden files, in long form, in readable format
-'ls -t' : list all files in directory, sorted by time and date
-'ls - Glp' : list all files in directory, ?, in long format, with /
+ls : list all files in directory
+ls -a : list all files in directory, including hidden files
+ls -l : list all files in directory, in long form
+ls -lh : list all files in directory, in long form, with readable format
+ls -lah : list all files in directory, including hidden files, in long form, in readable format
+ls -t : list all files in directory, sorted by time and date
+ls - Glp : list all files in directory, ?, in long format, with /
 ---
 
 ### Q3.  More List Files in Unix  
