@@ -8,7 +8,6 @@ def donuts(count):
     form 'Number of donuts: <count>', where <count> is the number
     passed in. However, if the count is 10 or more, then use the word
     'many' instead of the actual count.
-
     >>> donuts(4)
     'Number of donuts: 4'
     >>> donuts(9)
@@ -18,7 +17,16 @@ def donuts(count):
     >>> donuts(99)
     'Number of donuts: many'
     """
-    raise NotImplementedError
+    if count < 10:
+        print("Number of donuts:", count)
+    else:
+        print("Number of donuts: many")
+
+donuts(4)
+donuts(9)
+donuts(10)
+donuts(99)
+
 
 
 def both_ends(s):
@@ -27,7 +35,6 @@ def both_ends(s):
     2 chars of the original string, so 'spring' yields 'spng'.
     However, if the string length is less than 2, return instead the
     empty string.
-
     >>> both_ends('spring')
     'spng'
     >>> both_ends('Hello')
@@ -37,7 +44,15 @@ def both_ends(s):
     >>> both_ends('xyz')
     'xyyz'
     """
-    raise NotImplementedError
+        if len(s) < 2:
+            return ''
+        else:
+            return s[0:2] + s[-2:]
+
+    print(both_ends('spring'))
+    print(both_ends('Hello'))
+    print(both_ends('a'))
+    print(both_ends('xyz'))
 
 
 def fix_start(s):
@@ -46,7 +61,6 @@ def fix_start(s):
     first char have been changed to '*', except do not change the
     first char itself. e.g. 'babble' yields 'ba**le' Assume that the
     string is length 1 or more.
-
     >>> fix_start('babble')
     'ba**le'
     >>> fix_start('aardvark')
@@ -56,7 +70,15 @@ def fix_start(s):
     >>> fix_start('donut')
     'donut'
     """
-    raise NotImplementedError
+    firstletter = s[0]
+    rest = s.replace(firstletter, '*')
+
+    return firstletter + rest[1:]
+
+print(fix_start('babble'))
+print(fix_start('google'))
+print(fix_start('aardvark'))
+print(fix_start('donut'))
 
 
 def mix_up(a, b):
@@ -64,7 +86,6 @@ def mix_up(a, b):
     Given strings a and b, return a single string with a and b
     separated by a space '<a> <b>', except swap the first 2 chars of
     each string. Assume a and b are length 2 or more.
-
     >>> mix_up('mix', 'pod')
     'pox mid'
     >>> mix_up('dog', 'dinner')
@@ -74,7 +95,15 @@ def mix_up(a, b):
     >>> mix_up('pezzy', 'firm')
     'fizzy perm'
     """
-    raise NotImplementedError
+    swap1 = a[0:2]
+    swap2 = b[0:2]
+
+    return swap2 + a[2:] + " " + swap1 + b[2:]
+
+print(mix_up('mix', 'pod'))
+print(mix_up('dog', 'dinner'))
+print(mix_up('gnash', 'sport'))
+print(mix_up('pezzy', 'firm'))
 
 
 def verbing(s):
@@ -83,7 +112,6 @@ def verbing(s):
     Unless it already ends in 'ing', in which case add 'ly' instead.
     If the string length is less than 3, leave it unchanged. Return
     the resulting string.
-
     >>> verbing('hail')
     'hailing'
     >>> verbing('swiming')
@@ -91,7 +119,19 @@ def verbing(s):
     >>> verbing('do')
     'do'
     """
-    raise NotImplementedError
+    if len(s) > 2:
+        if s[-3:] == 'ing':
+            adverb = s + 'ly'
+            return adverb
+        else:
+            gerund = s + 'ing'
+            return gerund
+    else:
+        return s
+
+print(verbing('hail'))
+print(verbing('swimming'))
+print(verbing('do'))
 
 
 def not_bad(s):
@@ -101,7 +141,6 @@ def not_bad(s):
     'not'...'bad' substring with 'good'. Return the resulting string.
     So 'This dinner is not that bad!' yields: 'This dinner is
     good!'
-
     >>> not_bad('This movie is not so bad')
     'This movie is good'
     >>> not_bad('This dinner is not that bad!')
@@ -111,7 +150,19 @@ def not_bad(s):
     >>> not_bad("It's bad yet not")
     "It's bad yet not"
     """
-    raise NotImplementedError
+    notloc = s.find('not')
+    badloc = s.find('bad')
+
+    if 'not' and 'bad' in s and notloc < badloc:
+            newsentence = s.replace(s[notloc:(badloc + 3)], 'good')
+            return newsentence
+    else:
+        return s
+
+print(not_bad('This movie is not so bad'))
+print(not_bad('This dinner is not that bad!'))
+print(not_bad('This tea is not hot'))
+print(not_bad("It's bad yet not"))
 
 
 def front_back(a, b):
@@ -122,7 +173,6 @@ def front_back(a, b):
     'abcde', the front half is 'abc', the back half 'de'. Given 2
     strings, a and b, return a string of the form a-front + b-front +
     a-back + b-back
-
     >>> front_back('abcd', 'xy')
     'abxcdy'
     >>> front_back('abcde', 'xyz')
@@ -130,4 +180,23 @@ def front_back(a, b):
     >>> front_back('Kitten', 'Donut')
     'KitDontenut'
     """
-    raise NotImplementedError
+    if len(a) % 2 == 0:
+        amid = len(a) // 2
+    else:
+        amid = len(a) // 2 + 1
+
+    if len(b) % 2 == 0:
+        bmid = len(b) // 2
+    else:
+        bmid = len(b) // 2 + 1
+
+    afront = a[:amid]
+    aback = a[amid:]
+    bfront = b[:bmid]
+    bback = b[bmid:]
+
+    return afront + bfront + aback + bback
+
+print(front_back('abcd', 'xy'))
+print(front_back('abcde', 'xyz'))
+print(front_back('Kitten', 'Donut'))
