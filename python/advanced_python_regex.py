@@ -11,7 +11,7 @@ with open('faculty.csv') as csv_file:
     emaillist = []
     
     for row in csv_reader:
-        degreelist.append(row[1])
+        degreelist1.append(row[1])
         positionlist.append(row[2])
         emaillist.append(row[3])
 
@@ -37,3 +37,26 @@ with open('faculty.csv') as csv_file:
 # determining the number and frequency of positions, q2    
     positionstring = ' '.join(positionlist)
     postypelist = []
+    
+    for item in positionlist:
+        title = item.split(' of')
+        postypelist.append(title[0])
+        
+    positions = Counter(postypelist)
+   
+# answer to q2 of part I
+    print positions
+    
+        
+## answer to q3 of part I
+    print emaillist
+
+# q4 calculation
+
+    emailstring = ' '.join(emaillist)
+    domainlist = re.findall(r'\@(\S*)', emailstring)    
+    emaildict = Counter(domainlist)
+    
+# answer to q4 of part I
+    print len(emaildict.keys())
+    print emaildict.keys()
